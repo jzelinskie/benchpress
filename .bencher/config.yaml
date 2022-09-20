@@ -1,13 +1,12 @@
 # # https://bencher.orijtech.com/configuration/
 suppress_failure_on_regression: true
-# global:
-#   reg_min: 10.0
-#   imp_min: -10.0
 dependencies:
   services:
     dind:
       image: "docker:dind"
       ports: [2375]
+      privileged: true
+      network_mode: "host"
 environment:
-  DOCKER_HOST: "tcp://docker:2375"
+  DOCKER_HOST: "tcp://localhost:2375"
   DOCKER_DRIVER: "overlay2"
